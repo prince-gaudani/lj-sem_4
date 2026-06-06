@@ -1,4 +1,4 @@
-"""moviereviews URL Configuration
+"""eventmanagement URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,19 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from movie import views as movieViews
-from xyz import views as nameViews
-from django.conf.urls.static import static
-from django.conf import settings
-from django.urls import path,include
+from events import views as eventView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',movieViews.home,name='home'),
-    path('about/',movieViews.about,name='about'),
-    path('abc/',nameViews.details),
-    path('signup/',movieViews.signup,name='signup'),
-    path('news/',include('news.urls')),
+    path('',eventView.home,name="home"),
+    path('upcomingevents/',eventView.events,name='upcomingevents'),
 ]
-
-urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

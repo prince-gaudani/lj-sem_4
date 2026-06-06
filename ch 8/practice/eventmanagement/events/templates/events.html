@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Upcoming Events</title>
+</head>
+
+<body>
+    <h1>Upcoming Events</h1>
+    <form method="GET">
+        <input type="text" name="q" placeholder="Search by event name">
+        <button type="submit">Search</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Location</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in allEvents %}
+            <tr>
+                <td>{{ e.EventName}}</td>
+                <td>{{ e.EventDate}}</td>
+                <td>{{ e.Location}}</td>
+                <td>{{ e.Category}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> <br>
+    <a href="#">View Event Categories</a>
+</body>
+
+</html>
