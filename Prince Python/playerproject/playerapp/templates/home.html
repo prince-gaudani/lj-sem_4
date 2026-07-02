@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a> | <a href="/welcome/">Welcome</a> |
+    <a href="{% url 'add_player'%}">Add Player</a>
+    <hr />
+    <form method="GET">
+      <input type="text" name="search" />
+      <button>Search</button>
+    </form>
+    {% if players %}
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Test Innings</th>
+        <th>Runs</th>
+        <th>Action</th>
+      </tr>
+      {% for player in players %}
+      <tr>
+        <td>{{player.Name}}</td>
+        <td>{{player.Test_Innings}}</td>
+        <td>{{player.Runs}}</td>
+        <td>
+          <a href="{% url 'edit_player' player.id %}">Edit</a>
+          <a href="/delete/{{player.id}}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <h3>No Record Found</h3>
+    {% endif %}
+  </body>
+</html>
